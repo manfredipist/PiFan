@@ -18,7 +18,7 @@ start)  echo "Starting the fan!"
 stop) 	echo "Stopping the fan!"
 				gpio write 1 0
 ;;
-restart) 	echo "Starting the fan service!"
+service) 	echo "Starting the fan service!"
 					while true
 					do
 						temp=$(vcgencmd measure_temp|awk -F "=" '{print $2}'|awk -F "." '{print $1}')
@@ -37,7 +37,7 @@ restart) 	echo "Starting the fan service!"
 						sleep 1m
 					done
 ;;
-*)      echo "Usage: /etc/init.d/fan.sh {start|stop|restart}"
+*)      echo "Usage: /etc/init.d/fan.sh {start|stop|service}"
         exit 2
         ;;
 esac
